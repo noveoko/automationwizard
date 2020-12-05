@@ -74,7 +74,7 @@ const App = {
             //calculations
             let workerCostPerSecond = workerCost/60/60;
             let taskCostPerRun = workerCostSecond*duration;
-            let taskCostMonth = taskCostPerRun*frequency*daysPerMonth;
+            let taskCostMonth = taskCostPerRun*frequency*daysPerMonth*workersCount;
             let taskCostYear = 2
 
             return [{label:"Worker $/sec",value:workerCostPerSecond.toFixed(4)},
