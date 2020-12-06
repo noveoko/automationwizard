@@ -10,5 +10,9 @@ This was created to let anyone determine if it makes sense to spend time automat
 
 ## Scientific basis for this?
 
-There is no hard science behind this app. This app is inspired by a famous XKCD comic which you may find below:
+There is no hard science behind this app. Please use it as an exploratory tool. If you need to make business critical deicisions don't use an app. Hire a data scientist.
+
+## Source of Inspiration
+
+This app is inspired by a famous XKCD comic which you may find below:
 ![XKCD](https://imgs.xkcd.com/comics/is_it_worth_the_time.png)
