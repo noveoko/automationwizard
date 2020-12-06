@@ -1,6 +1,9 @@
 # Automation Decision Wizard
 An interactive calculator to determine if it makes sense to automate 
 
+# Live Demo
+[Automation Decision Wizard]()
+
 ## Why this?
 
 This was created to let anyone determine if it makes sense to spend time automating a task that might as well just be performed manually.
