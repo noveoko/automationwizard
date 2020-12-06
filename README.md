@@ -2,7 +2,7 @@
 An interactive calculator to determine if it makes sense to automate 
 
 # Live Demo
-[Automation Decision Wizard](https://noveoko.github.io/automationwizard/)
+[DEMO](https://noveoko.github.io/automationwizard/)
 
 ## Why this?
 
