@@ -2,7 +2,7 @@ console.log("main js loaded")
 const App = {
     data() {
         return {
-            choices: { frequency: 50, duration: 60, workers: 1, pay: 15, developerSalary: 35, developmentTime: 5, workerSalary: false,sameWorker:true,salaryCountry:"106810",salaryCalc:0 },
+            choices: { maintanence:2,frequency: 50, duration: 60, workers: 1, pay: 15, developerSalary: 35, developmentTime: 5, workerSalary: false,sameWorker:true,salaryCountry:"106810",salaryCalc:0 },
             frequency: [{ value: 50, label: "50/day" },
             { value: 5, label: "5/day" },
             { value: 1, label: "1/day" },
@@ -32,11 +32,15 @@ const App = {
                 "Netherlands":51162,
                 "Finland":43000,
                 "Australia":46500,
-                "France":40119}
+                "France":40119},
+            values:{"monthlySavings":0}
         }
 
     },
     computed:{
+            getMaintenance:function(){
+                return this.choices.maintanence;
+            },
             getChoices:function(){
                 return this.choices
             },
@@ -75,6 +79,7 @@ const App = {
             let workerCostPerSecond = workerCost/60/60;
             let taskCostPerRun = workerCostSecond*duration;
             let taskCostMonth = taskCostPerRun*frequency*daysPerMonth*workersCount;
+            this.monthlySavings = taskCostMonth;
             let taskCostYear = 2
 
             return [{label:"Worker $/sec",value:workerCostPerSecond.toFixed(4)},
@@ -82,6 +87,20 @@ const App = {
                     {label:"Task $/instance",value:`$${(taskCostPerRun).toFixed(2)}`},
                     {label:"Task $/month",value:taskCostMonth.toFixed(2)}]
         },
+        generateReport:function(){
+            let devCost = this.getDevCost;
+            let maintanence = this.getMaintenanceCost;
+            let savings = this.monthlySavings;
+            let dailySavings = this.monthlySavings/this.daysPerMonth
+            let months = [1,2,3,4,5,6,7,8,9,10,11,12]
+            months.forEach(month=>{
+                console.log(devCost)
+                while(devCost>0){
+                    devCost = devCost-savings;
+                }
+            })
+
+                },
         getRadio:function(name="salary",update="salaryCalc"){
             console.log("fetching radio buttons")
             let elements = document.getElementsByName(name)
@@ -94,6 +113,24 @@ const App = {
         },
         getSalary:function(country="USA"){
             return salaries[country]
+        },
+        getDevCost:function(){
+            let developmentCost
+            if(this.choices.sameWorker==true){
+                developmentCost = this.choices.developmentTime*this.choices.pay;
+            }else{developmentCost = this.choices.developmentTime*this.choices.developerSalary;
+            }
+            console.log(developmentCost)
+            return developmentCost
+        },
+        getMaintenanceCost:function(){
+            let maintanenceCost
+            if(this.choices.sameWorker==true){
+                maintanenceCost = this.choices.maintanence*this.choices.pay;
+            }else{maintanenceCost = this.choices.maintanence*this.choices.developerSalary;
+            }
+            console.log(maintanenceCost)
+            return maintanenceCost
         },
         widestElem:function(tag){
             maxWidth = 0

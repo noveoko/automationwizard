@@ -18,7 +18,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm">
-          <h1 class="display-4">Automation Decision Wizard 🐞</h1>
+          <h1 class="display-4">Automation Decision Wizard <img src="images\apple-touch-icon.png"></h1>
           <p>An <a href="https://soai.world">SOAI.world</a> micro app</p>
           <form>
 
@@ -57,6 +57,7 @@
                   </div>
                 </div>
                 <div class="col-sm">
+                  <h5><span class="quote">Worker value saved</h5>
                   <div v-for="(item,index) in this.manualWork()" :key="index" :value="item">
                     <p>{{item.label}} <strong>{{item.value}}</strong></p>
                   </div>
@@ -69,6 +70,7 @@
             <div class="form-group">
               <div>
                 <h4>Automation</h4>
+                <h5>Development</h5>
                 <div v-if="choices.sameWorker==true" class="alert alert-success">
                   <p><strong>Worker</strong> will automate their own task</p>
                 </div>
@@ -83,14 +85,25 @@
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Total time to automate task (hours)</span>
+                    <span class="input-group-text" id="basic-addon1">Hours to develop automation</span>
                   </div>
                   <input type="number" min="1" max="10000" v-model="choices.developmentTime" />
+                </div>
+                <h5>Maintenance</h5>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Monthly maintanence hours</span>
+                  </div>
+                  <input class="form-control" type="number" min="0" max="10000" v-model="this.choices.maintanence" />
                 </div>
               </div>
             </div>
           </div>
-            <div class="col-sm">RIGHT COL...</div>
+            <div class="col-sm">
+              <h5>Costs to automate</h5>
+              <p>Initial development:<strong>${{this.getDevCost()}}</strong></p>
+              <p>Monthly maintenance:<strong>${{this.getMaintenanceCost()}}</strong></p>
+            </div>
           </div>
   
         
@@ -128,7 +141,8 @@
               </div>
             </div>
           </div>
-        </div><div class="col-sm">Right side</div></div>
+        </div><div class="col-sm">
+        </div></div>
 
         </form>
         <div class="row ">
@@ -140,7 +154,11 @@
           <p>Humans performing task <strong>{{choices.workers}}</strong>
           <p>Hourly wage of task performer <strong>{{choices.pay}}</strong>
           <p>Hourly wage of task automation developer <strong>{{choices.developerSalary}}</strong>
-        </div></div><div class="col-sm">RIGHT SIDE...</div></div>
+        </div></div><div class="col-sm">
+          <h5>Time Saved vs. Costs</h5>
+
+
+        </div></div>
         <h2>Recommendation</h2>
         <button type="button" class="btn btn-primary">Perform Wizardry!</button>
         <p>Inspiration for this application: <a href="https://xkcd.com/1205/">XKCD 1205</a></p>
